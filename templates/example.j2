@@ -1,0 +1,17 @@
+# This is a sample Jinja2 template with common use cases
+
+# If
+{% if some_var is defined %}
+some_setting={{ some_var }}
+{% endif %}
+
+# For
+# some_list: [ a, b, c ]
+{% for element in some_list %}
+{{ element }}
+{% endfor %}
+
+# Dict to settings
+{% for key, value in ROLENAME_env_extra.items() %}
+{{ key }}={{ value }}
+{% endfor %}
