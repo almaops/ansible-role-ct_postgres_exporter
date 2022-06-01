@@ -1,9 +1,9 @@
 ---
+allow_duplicates: true
 galaxy_info:
-  # Change to your Firstname Lastname
-  author: AUTHORNAME
-  description: Ansible role does ...
-  role_name: ROLENAME
+  author: Valentin Gostev
+  description: Ansible role deploys container with Postgres Exporter
+  role_name: ct_postgres_exporter
   namespace: almaops
   license: MIT
   min_ansible_version: 2.10
@@ -15,23 +15,13 @@ galaxy_info:
       versions:
         - all
   galaxy_tags:
-    - todo
-dependencies: []
-  # Dependency from Git repo
-  - name: example
-    src: https://github.com/almaops/template-ansible-role.git
-    version: d88e886c46658561e27b624bfa70e32d6058a25c
-    when: use_example
-  # Dependency from Galaxy
-  - role: almaops.vars
-  # Running same role with multiple params
-  - role: duplicate_role
-    param: a
-  - role: duplicate_role
-    param: b
-  # Conditional dependency
-  - role: debian_specific
-    when: ansible_os_family == 'Debian'
-  - role: variable_specific
-    when: some_var == 3
+    - postgres
+    - postgresql
+    - prometheus
+    - exporter
+    - metrics
+dependencies:
+  - role: almaops.pip_install
+    pip_install_packages:
+      - docker
 ...
