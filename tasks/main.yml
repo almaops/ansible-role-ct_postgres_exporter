@@ -1,5 +1,5 @@
 ---
-- name: "{{ ct_postgres_exporter_task_prefix }}: postgres exporter"
+- name: "{{ ct_postgres_exporter_task_prefix }} Create container"
   community.docker.docker_container:
     image: "{{ ct_postgres_exporter_ct_image }}"
     name: "{{ ct_postgres_exporter_ct_name }}"
@@ -11,4 +11,5 @@
     network_mode: "{{ ct_postgres_exporter_ct_network_mode }}"
     networks: "{{ ct_postgres_exporter_ct_networks }}"
     ports: "{{ ct_postgres_exporter_enable_ports | ternary(ct_postgres_exporter_ct_ports, omit) }}"
+    env: "{{ ct_postgres_exporter_ct_env }}"
 ...
